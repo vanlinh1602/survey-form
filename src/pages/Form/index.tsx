@@ -229,7 +229,7 @@ export default function HierarchicalForm() {
 
         return (
           <div key={sectionPath} className="col-span-full">
-            <div className="ml-4 border-l-2 border-border pl-4">
+            <div className="ml-2 border-l-2 border-border pl-4">
               <button
                 onClick={() => toggleSection(sectionPath)}
                 className="flex items-center gap-2 w-full text-left p-3 bg-muted/50 hover:bg-muted rounded-lg transition-colors"
@@ -262,10 +262,10 @@ export default function HierarchicalForm() {
     const isExpanded = expandedSections.has(sectionKey);
 
     return (
-      <Card key={sectionKey} className="bg-card border-border shadow-sm">
+      <Card key={sectionKey} className="bg-card border-border shadow-sm py-4">
         <button
           onClick={() => toggleSection(sectionKey)}
-          className="flex items-center justify-between w-full p-4 text-left hover:bg-muted/50 transition-colors rounded-t-lg"
+          className="flex items-center justify-between w-full p-4 py-0 text-left hover:bg-muted/50 transition-colors rounded-t-lg"
         >
           <div className="flex items-center gap-3">
             {isExpanded ? (
@@ -280,7 +280,7 @@ export default function HierarchicalForm() {
         </button>
 
         {isExpanded && (
-          <CardContent className="pt-0 pb-6">
+          <CardContent className="pt-0 pb-2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {section.fields && renderNestedFields(section.fields, sectionKey)}
               {section.type && renderField(sectionKey, section)}
@@ -369,7 +369,7 @@ export default function HierarchicalForm() {
       </header>
 
       {/* Form Content */}
-      <main className="container mx-auto px-4 py-6 pb-24">
+      <main className="container mx-auto px-4 py-4 pb-24">
         <div className="max-w-4xl mx-auto space-y-6">
           {Object.entries(formSchema).map(([sectionKey, section]) =>
             renderSection(sectionKey, section as FormField)

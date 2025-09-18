@@ -1,0 +1,228 @@
+{
+  "info": {
+    "name": "Thông tin cơ bản",
+    "fields": {
+      "nhom": {
+        "name": "NHÓM",
+        "type": "string"
+      },
+      "vung": {
+        "name": "Thuộc vùng",
+        "type": "string"
+      },
+      "muc_do_tu_chi": {
+        "name": "Mức độ tự chủ chi thường xuyên (%)",
+        "type": "number"
+      },
+      "du_toan_thu_2026": {
+        "name": "Dự toán thu 2026 (DVT: triệu đồng)",
+        "type": "number"
+      },
+      "tong_so_lop": {
+        "name": "Tổng số lớp",
+        "type": "number"
+      }
+    }
+  },
+  "tong_so": {
+    "name": "Tổng số",
+    "fields": {
+      "hs": {
+        "name": "Học sinh",
+        "type": "number"
+      },
+      "lop": {
+        "name": "Lớp",
+        "type": "number"
+      }
+    }
+  },
+  "thcs": {
+    "name": "Cấp THCS",
+    "fields": {
+      "lop_1b": {
+        "name": "Lớp 1b/ngày",
+        "fields": {
+          "hs": {
+            "name": "Học sinh",
+            "type": "number"
+          },
+          "lop": {
+            "name": "Lớp",
+            "type": "number"
+          }
+        }
+      },
+      "lop_2b": {
+        "name": "Lớp 2b/ngày",
+        "fields": {
+          "hs": {
+            "name": "Học sinh",
+            "type": "number"
+          },
+          "lop": {
+            "name": "Lớp",
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "thpt": {
+    "name": "Cấp THPT",
+    "fields": {
+      "lop_1b": {
+        "name": "Lớp 1b/ngày",
+        "fields": {
+          "hs": {
+            "name": "Học sinh",
+            "type": "number"
+          },
+          "lop": {
+            "name": "Lớp",
+            "type": "number"
+          }
+        }
+      },
+      "lop_2b": {
+        "name": "Lớp 2b/ngày",
+        "fields": {
+          "hs": {
+            "name": "Học sinh",
+            "type": "number"
+          },
+          "lop": {
+            "name": "Lớp",
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "ts_CBGVNL_thong_tu": {
+    "name": "Tổng số CB-GV-NV theo Thông tư",
+    "fields": {
+      "ts": {
+        "name": "Tổng số",
+        "type": "number"
+      },
+      "cbql": {
+        "name": "Cán bộ quản lý",
+        "type": "number"
+      },
+      "gvthcs": {
+        "name": "Giáo viên THCS",
+        "type": "number"
+      },
+      "gvthpt": {
+        "name": "Giáo viên THPT",
+        "type": "number"
+      },
+      "ptd": {
+        "name": "Tổng phụ trách đội (THCS)",
+        "type": "number"
+      },
+      "tv_tb": {
+        "name": "Thư viện, thiết bị, CNTT",
+        "type": "number"
+      },
+      "ke_toan_van_thu_thu_quy": {
+        "name": "Kế toán, văn thư, thủ quỹ, giáo vụ",
+        "type": "number"
+      }
+    }
+  },
+  "sl_lam_viec_2025": {
+    "name": "Số lượng người làm việc được giao năm 2025",
+    "fields": {
+      "nsnn": {
+        "name": "Số lượng người làm việc hưởng lương từ NSNN",
+        "type": "number"
+      },
+      "su_nghiep": {
+        "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
+        "type": "number"
+      },
+      "hop_dong": {
+        "name": "Hợp đồng chuyên môn nghiệp vụ (Trong chỉ tiêu Hội đồng ND giao hằng năm)",
+        "type": "number"
+      }
+    }
+  },
+  "ts_CBGVNL_co_mat_thang_8_2025": {
+    "name": "Tổng số CB-GV-NV có mặt (tại thời điểm tháng 8/2025)",
+    "fields": {
+      "vien_chuc": {
+        "name": "Viên chức",
+        "fields": {
+          "ts": {
+            "name": "Tổng số",
+            "type": "number"
+          },
+          "cbql": {
+            "name": "Cán bộ quản lý",
+            "type": "number"
+          },
+          "gvthcs": {
+            "name": "Giáo viên THCS",
+            "type": "number"
+          },
+          "gvthpt": {
+            "name": "Giáo viên THPT",
+            "type": "number"
+          },
+          "ptd": {
+            "name": "Tổng phụ trách đội (THCS)",
+            "type": "number"
+          },
+          "tv_tb": {
+            "name": "Thư viện, thiết bị, CNTT",
+            "type": "number"
+          },
+          "ke_toan_van_thu_thu_quy": {
+            "name": "Kế toán, văn thư, thủ quỹ, giáo vụ",
+            "type": "number"
+          }
+        }
+      },
+      "hop_dong": {
+        "name": "Hợp đồng chuyên môn, nghiệp vụ",
+        "fields": {
+          "bien_che": {
+            "name": "Trong chỉ tiêu biên chế được giao (biên chế được giao nhưng chưa tuyển dụng)",
+            "type": "number"
+          },
+          "hdnd": {
+            "name": "Trong chỉ tiêu Hội đồng nhân dân giao theo hằng năm",
+            "type": "number"
+          }
+        }
+      },
+      "ho_tro": {
+        "name": "Hợp đồng hỗ trợ, phục vụ",
+        "type": "number"
+      }
+    }
+  },
+  "nhu_cau_2026": {
+    "name": "Nhu cầu năm 2026",
+    "fields": {
+      "nsnn": {
+        "name": "Số lượng người làm việc hưởng lương từ NSNN",
+        "type": "number"
+      },
+      "su_nghiep": {
+        "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
+        "type": "number"
+      },
+      "hop_dong": {
+        "name": "Hợp đồng chuyên môn nghiệp vụ",
+        "type": "number"
+      }
+    }
+  },
+  "note": {
+    "name": "Ghi chú",
+    "type": "string"
+  }
+}
