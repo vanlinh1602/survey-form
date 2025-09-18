@@ -1,4 +1,10 @@
-import { ChevronDown, ChevronRight, RotateCcw, Save } from 'lucide-react';
+import {
+  ChevronDown,
+  ChevronRight,
+  LogOut,
+  RotateCcw,
+  Save,
+} from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { toast } from 'sonner';
@@ -13,6 +19,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useSystemStore } from '@/features/system/hooks';
 import cities from '@/lib/cities.json';
 import { resources } from '@/lib/options';
+import { auth } from '@/services/firebase';
 import { ReportsService } from '@/services/reports';
 
 interface FormField {
@@ -380,22 +387,41 @@ export default function HierarchicalForm() {
       {/* Sticky Bottom Toolbar */}
       <div className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-t border-border">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-wrap gap-3 justify-center md:justify-end">
-            <Button
-              onClick={handleSave}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm"
-            >
-              <Save className="h-4 w-4 mr-2" />
-              Lưu
-            </Button>
-            <Button
-              onClick={handleReset}
-              variant="outline"
-              className="border-border hover:bg-muted bg-transparent"
-            >
-              <RotateCcw className="h-4 w-4 mr-2" />
-              Đặt lại
-            </Button>
+          <div className="flex flex-wrap gap-3 justify-between">
+            <div>
+              <Button
+                onClick={async () => {
+                  try {
+                    setIsLoading(true);
+                    await auth.signOut();
+                  } catch (error: any) {
+                    toast.error(error.message);
+                  } finally {
+                    setIsLoading(false);
+                  }
+                }}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Đăng xuất
+              </Button>
+            </div>
+            <div>
+              <Button
+                onClick={handleSave}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm"
+              >
+                <Save className="h-4 w-4 mr-2" />
+                Lưu
+              </Button>
+              <Button
+                onClick={handleReset}
+                variant="outline"
+                className="border-border hover:bg-muted bg-transparent"
+              >
+                <RotateCcw className="h-4 w-4 mr-2" />
+                Đặt lại
+              </Button>
+            </div>
           </div>
         </div>
       </div>

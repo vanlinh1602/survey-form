@@ -31,6 +31,11 @@ function App() {
           id: user.uid,
           email: user.email || '',
         });
+      } else {
+        setUser({
+          id: '',
+          email: '',
+        });
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

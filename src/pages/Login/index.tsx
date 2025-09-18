@@ -77,11 +77,11 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="rounded-3xl border border-gray-200 shadow-sm bg-white p-6 md:p-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="size-10 rounded-2xl bg-indigo-600" aria-hidden />
+            <img className="w-10" src="logo.png" />
             <div>
-              <h1 className="text-lg md:text-xl font-semibold">Sign in</h1>
+              <h1 className="text-lg md:text-xl font-semibold">Đăng nhập</h1>
               <p className="text-sm text-gray-500">
-                Use your Google account to continue
+                Vui lòng đăng nhập để tiếp tục
               </p>
             </div>
           </div>
@@ -93,25 +93,25 @@ export default function LoginPage() {
             className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium hover:bg-gray-50 disabled:opacity-60"
           >
             <GoogleIcon />
-            {handling ? 'Redirecting…' : 'Continue with Google'}
+            {handling ? 'Đang chuyển hướng...' : 'Đăng nhập bằng Google'}
           </button>
 
-          <div className="mt-6 text-center text-xs text-gray-500">
+          {/* <div className="mt-6 text-center text-xs text-gray-500">
             By continuing, you agree to our Terms and Privacy Policy.
-          </div>
+          </div> */}
         </div>
 
         <div className="text-center mt-4 text-xs text-gray-500">
           {handling
-            ? 'Checking session…'
+            ? 'Đang kiểm tra phiên...'
             : handling
-            ? 'Signed in'
-            : 'Not signed in'}
+            ? 'Đã đăng nhập'
+            : 'Chưa đăng nhập'}
         </div>
 
         {next && (
           <div className="text-center mt-1 text-xs text-gray-400">
-            After sign in, you'll be redirected to{' '}
+            Sau khi đăng nhập, bạn sẽ được chuyển hướng đến{' '}
             <span className="font-medium text-gray-600">{next}</span>
           </div>
         )}
