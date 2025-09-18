@@ -1,0 +1,211 @@
+{
+  "info": {
+    "name": "Thông tin cơ bản",
+    "fields": {
+      "nhom": {
+        "name": "NHÓM",
+        "type": "string"
+      },
+      "muc_do_tu_chi": {
+        "name": "Mức độ tự chủ chi thường xuyên (%)",
+        "type": "number"
+      },
+      "du_toan_thu_2026": {
+        "name": "Dự toán thu 2026 (DVT: triệu đồng)",
+        "type": "number"
+      },
+      "tong_so_nhom_lop": {
+        "name": "Tổng số nhóm/lớp",
+        "type": "number"
+      }
+    }
+  },
+  "nhatre": {
+    "name": "Trẻ nhà trẻ",
+    "fields": {
+      "tre_3_12": {
+        "name": "Trẻ 3-12 tháng",
+        "type": "number"
+      },
+      "nhom_3_12": {
+        "name": "Nhóm 3-12 tháng",
+        "type": "number"
+      },
+      "tre_13_24": {
+        "name": "Trẻ 13-24 tháng",
+        "type": "number"
+      },
+      "nhom_13_24": {
+        "name": "Nhóm 13-24 tháng",
+        "type": "number"
+      },
+      "tre_25_36": {
+        "name": "Trẻ 25-36 tháng",
+        "type": "number"
+      },
+      "nhom_25_36": {
+        "name": "Nhóm 25-36 tháng",
+        "type": "number"
+      }
+    }
+  },
+  "maugiao": {
+    "name": "Trẻ mẫu giáo",
+    "fields": {
+      "1b_ngay": {
+        "name": "1b/ngày",
+        "fields": {
+          "tre_3_4t": {
+            "name": "Trẻ 3-4 tuổi",
+            "type": "number"
+          },
+          "lop_3_4t": {
+            "name": "Lớp 3-4 tuổi",
+            "type": "number"
+          },
+          "tre_4_5t": {
+            "name": "Trẻ 4-5 tuổi",
+            "type": "number"
+          },
+          "lop_4_5t": {
+            "name": "Lớp 4-5 tuổi",
+            "type": "number"
+          },
+          "tre_5_6t": {
+            "name": "Trẻ 5-6 tuổi",
+            "type": "number"
+          },
+          "lop_5_6t": {
+            "name": "Lớp 5-6 tuổi",
+            "type": "number"
+          }
+        }
+      },
+      "tre_3_4t": {
+        "name": "Trẻ 3-4 tuổi",
+        "type": "number"
+      },
+      "lop_3_4t": {
+        "name": "Lớp 3-4 tuổi",
+        "type": "number"
+      },
+      "tre_4_5t": {
+        "name": "Trẻ 4-5 tuổi",
+        "type": "number"
+      },
+      "lop_4_5t": {
+        "name": "Lớp 4-5 tuổi",
+        "type": "number"
+      },
+      "tre_5_6t": {
+        "name": "Trẻ 5-6 tuổi",
+        "type": "number"
+      },
+      "lop_5_6t": {
+        "name": "Lớp 5-6 tuổi",
+        "type": "number"
+      }
+    }
+  },
+  "ts_CBGVNL_thong_tu": {
+    "name": "Tổng số CB-GV-NV theo Thông tư",
+    "fields": {
+      "ts": {
+        "name": "Tổng số",
+        "type": "number"
+      },
+      "bgh": {
+        "name": "Ban Giám hiệu",
+        "type": "number"
+      },
+      "gv_nha_tre": {
+        "name": "GV nhà trẻ",
+        "type": "number"
+      },
+      "gv_mau_giao": {
+        "name": "GV mẫu giáo",
+        "type": "number"
+      },
+      "ke_toan_van_thu_thu_quy": {
+        "name": "Kế toán, văn thư, thủ quỹ",
+        "type": "number"
+      }
+    }
+  },
+  "sl_lam_viec_2025": {
+    "name": "Số lượng người làm việc được giao năm 2025",
+    "fields": {
+      "nsnn": {
+        "name": "Số lượng người làm việc hưởng lương từ NSNN",
+        "type": "number"
+      },
+      "su_nghiep": {
+        "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
+        "type": "number"
+      },
+      "hop_dong": {
+        "name": "Hợp đồng chuyên môn nghiệp vụ",
+        "type": "number"
+      }
+    }
+  },
+  "ts_CBGVNL_co_mat_thang_8_2025": {
+    "name": "Tổng số CB-GV-NV có mặt tháng 8/2025",
+    "fields": {
+      "vien_chuc": {
+        "name": "Viên chức",
+        "fields": {
+          "ts": {
+            "name": "Tổng số",
+            "type": "number"
+          },
+          "bgh": {
+            "name": "Ban Giám hiệu",
+            "type": "number"
+          },
+          "gv_nha_tre": {
+            "name": "GV nhà trẻ",
+            "type": "number"
+          },
+          "gv_mau_giao": {
+            "name": "GV mẫu giáo",
+            "type": "number"
+          },
+          "ke_toan_van_thu_thu_quy": {
+            "name": "Kế toán, văn thư, thủ quỹ",
+            "type": "number"
+          }
+        }
+      },
+      "hop_dong": {
+        "name": "Hợp đồng chuyên môn nghiệp vụ",
+        "type": "number"
+      },
+      "hop_dong_ho_tro": {
+        "name": "Hợp đồng hỗ trợ",
+        "type": "number"
+      }
+    }
+  },
+  "nhu_cau_2026": {
+    "name": "Nhu cầu năm 2026",
+    "fields": {
+      "nsnn": {
+        "name": "Số lượng người làm việc hưởng lương từ NSNN",
+        "type": "number"
+      },
+      "su_nghiep": {
+        "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
+        "type": "number"
+      },
+      "hop_dong": {
+        "name": "Hợp đồng chuyên môn nghiệp vụ",
+        "type": "number"
+      }
+    }
+  },
+  "note": {
+    "name": "Ghi chú",
+    "type": "string"
+  }
+}
