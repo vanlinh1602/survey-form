@@ -5,9 +5,11 @@ import { BrowserRouter, Routes } from 'react-router';
 import { useShallow } from 'zustand/shallow';
 
 import AuthPages from './AuthPages';
+import type { Option } from './components/SearchSelect';
 import { useSystemStore } from './features/system/hooks';
 import { auth } from './services/firebase';
 import { ReportsService } from './services/reports';
+import { SchoolsService } from './services/schools';
 import { UserService } from './services/user';
 
 const HomePage = lazy(() => import('./pages/Home'));
@@ -16,13 +18,23 @@ const LoginPage = lazy(() => import('./pages/Login'));
 const ExcelPage = lazy(() => import('./pages/Excel'));
 
 function App() {
-  const { setUser, userId, setForm, setInfo, setIsLoading } = useSystemStore(
+  const {
+    setUser,
+    userId,
+    setForm,
+    setInfo,
+    setIsLoading,
+    systemSchools,
+    setSchools,
+  } = useSystemStore(
     useShallow((state) => ({
       setUser: state.setUser,
       userId: state.user?.id,
       setForm: state.setForm,
       setInfo: state.setInfo,
       setIsLoading: state.setIsLoading,
+      systemSchools: state.schools,
+      setSchools: state.setSchools,
     }))
   );
 
@@ -74,6 +86,22 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
+
+  useEffect(() => {
+    if (!systemSchools) {
+      setIsLoading(true);
+      SchoolsService.getAllSchools().then((schoolsData) => {
+        const groupedSchools = schoolsData.reduce((acc, s) => {
+          const { type, label, value } = s;
+          acc[type] = [...(acc[type] ?? []), { label, value }];
+          return acc;
+        }, {} as Record<string, Option[]>);
+        setSchools(groupedSchools);
+        setIsLoading(false);
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

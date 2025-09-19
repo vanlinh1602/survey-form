@@ -13,6 +13,7 @@ export const useSystemStore = create<SystemStore & SystemStoreActions>()(
         setUser: (user) => set({ user }),
         setInfo: (info) => set({ info }),
         setForm: (form) => set({ form }),
+        setSchools: (schools) => set({ schools }),
         setIsLoading: (isLoading) => set({ isLoading }),
     }))
 );

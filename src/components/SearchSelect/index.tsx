@@ -96,10 +96,6 @@ export default function CreatableSearchSelect({
     const base: Option = { label: label.trim(), value: slugify(label) };
     try {
       const created = onCreateOption ? await onCreateOption(label) : base;
-      setLocalOptions((prev) => {
-        const next = [...prev, created];
-        return next;
-      });
       onChange(created);
       setQuery('');
       setOpen(false);
@@ -169,7 +165,7 @@ export default function CreatableSearchSelect({
     <div
       ref={rootRef}
       className={
-        'relative w-full max-w-md ' +
+        'relative w-full ' +
         (disabled ? 'opacity-60 cursor-not-allowed ' : '') +
         className
       }

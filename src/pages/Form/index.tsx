@@ -5,7 +5,7 @@ import {
   RotateCcw,
   Save,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { toast } from 'sonner';
 import { useShallow } from 'zustand/shallow';
@@ -19,6 +19,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useSystemStore } from '@/features/system/hooks';
 import cities from '@/lib/cities.json';
 import { resources } from '@/lib/options';
+import schools from '@/lib/schools.json';
 import { auth } from '@/services/firebase';
 import { ReportsService } from '@/services/reports';
 
@@ -48,6 +49,7 @@ export default function HierarchicalForm() {
     updateCurrentForm,
     setIsLoading,
     isLoading,
+    systemSchools,
   } = useSystemStore(
     useShallow((state) => ({
       isLoading: state.isLoading,
@@ -56,16 +58,12 @@ export default function HierarchicalForm() {
       currentForm: state.form,
       updateCurrentForm: state.setForm,
       setIsLoading: state.setIsLoading,
+      systemSchools: state.schools,
     }))
   );
 
   useEffect(() => {
-    if (
-      !userInfo?.level ||
-      !userInfo.ward ||
-      !userInfo.schoolName ||
-      !user?.id
-    ) {
+    if (!userInfo?.level || !userInfo.ward || !userInfo.school || !user?.id) {
       navigate('/', { replace: true });
     }
   }, [navigate, user?.id, userInfo]);
@@ -354,6 +352,20 @@ export default function HierarchicalForm() {
     }
   };
 
+  const schoolInfo = useMemo(() => {
+    return (
+      systemSchools?.[userInfo?.level || '']?.find(
+        (s) => s.value === userInfo?.school
+      )?.label ||
+      schools[userInfo?.level as keyof typeof schools]?.[
+        userInfo?.school as any
+      ] || {
+        label: '',
+        value: '',
+      }
+    );
+  }, [systemSchools, userInfo?.level, userInfo?.school]);
+
   const handleReset = () => {
     setFormData({});
   };
@@ -368,7 +380,7 @@ export default function HierarchicalForm() {
             {title}
           </h1>
           <p className="text-sm text-muted-foreground mt-1 text-center">
-            {`${userInfo?.schoolName} - ${
+            {`${schoolInfo} - ${
               (cities[68] as any).wards[userInfo?.ward as any]?.name
             }`}
           </p>

@@ -12,15 +12,17 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { useSystemStore } from '@/features/system/hooks';
 import cities from '@/lib/cities.json';
 import { otherReports, resources } from '@/lib/options';
+import schools from '@/lib/schools.json';
 import { ReportsService, type ReportsStore } from '@/services/reports';
 
 function ExcelPage() {
   const navigate = useNavigate();
 
-  const { isLoading, user } = useSystemStore(
+  const { isLoading, user, systemSchools } = useSystemStore(
     useShallow((state) => ({
       user: state.user,
       isLoading: state.isLoading,
+      systemSchools: state.schools,
     }))
   );
 
@@ -39,6 +41,13 @@ function ExcelPage() {
   });
 
   const [handling, setHandling] = useState<boolean>(false);
+
+  const getSchoolName = (level: string, school: string) => {
+    return (
+      systemSchools?.[level]?.find((s) => s.value === school)?.label ||
+      schools[level as keyof typeof schools]?.[school as any]
+    );
+  };
 
   const downloadBlob = (blob: Blob, filename: string) => {
     const url = URL.createObjectURL(blob);
@@ -97,7 +106,9 @@ function ExcelPage() {
         const wardName = (cities as any)?.[68]?.wards?.[item.info.ward as any]
           ?.name;
         dataSheet.cell(`A${startRow}`).value(index + 1);
-        dataSheet.cell(`B${startRow}`).value(item.info.schoolName);
+        dataSheet
+          .cell(`B${startRow}`)
+          .value(getSchoolName(item.info.level, item.info.school));
         dataSheet.cell(`C${startRow}`).value(wardName);
         writeData(dataSheet, startRow, item.form, schema);
         startRow += 1;
