@@ -1,7 +1,6 @@
 import { excelColToInt, intToExcelCol } from 'excel-column-name';
 import { Download, FileDown, FileSpreadsheet } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useState } from 'react';
 import { toast } from 'sonner';
 import XlsxPopulate from 'xlsx-populate/browser/xlsx-populate';
 import { useShallow } from 'zustand/shallow';
@@ -13,10 +12,11 @@ import { useSystemStore } from '@/features/system/hooks';
 import cities from '@/lib/cities.json';
 import { otherReports, resources } from '@/lib/options';
 import schools from '@/lib/schools.json';
+import { parseReportTienDo, parseReportTruongLopHS } from '@/lib/utils';
 import { ReportsService, type ReportsStore } from '@/services/reports';
 
 function ExcelPage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { isLoading, user, systemSchools } = useSystemStore(
     useShallow((state) => ({
@@ -26,12 +26,12 @@ function ExcelPage() {
     }))
   );
 
-  useEffect(() => {
-    if (!user?.isAdmin) {
-      navigate('/');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user?.isAdmin]);
+  // useEffect(() => {
+  //   if (!user?.isAdmin) {
+  //     navigate('/');
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [user?.isAdmin]);
 
   const [exporting, setExporting] = useState<Record<string, boolean>>({
     mn: false,
@@ -162,14 +162,26 @@ function ExcelPage() {
     }
   };
 
-  const handleExportOtherReport = async (level: string) => {
+  const handleExportOtherReport = async (
+    level: string,
+    data: ReportsStore[]
+  ) => {
     try {
-      setHandling(true);
       const levelConfig = otherReports[level as string];
       const { template } = levelConfig;
       const res = await fetch(template);
       if (!res.ok) throw new Error('Không tải được mẫu.');
-      const blob = await res.blob();
+      const arrayBuffer = await res.arrayBuffer();
+      const workbook = await XlsxPopulate.fromDataAsync(arrayBuffer);
+      const dataSheet = workbook.sheet(0);
+
+      if (level === 'tienDo') {
+        parseReportTienDo(dataSheet, data);
+      } else if (level === 'truongLopHS') {
+        parseReportTruongLopHS(dataSheet, data);
+      }
+
+      const blob = await workbook.outputAsync();
       downloadBlob(blob, `${level.toUpperCase()}.xlsx`);
       toast.success('Xuất Excel thành công');
     } catch (e: any) {
@@ -274,7 +286,9 @@ function ExcelPage() {
                   </Button>
                   <Button
                     onClick={async () => {
-                      handleExportOtherReport(lv.key);
+                      setHandling(true);
+                      const allReports = await ReportsService.getAllReport();
+                      handleExportOtherReport(lv.key, allReports);
                     }}
                     disabled={isLoading || exporting[lv.key] || disabledExport}
                   >

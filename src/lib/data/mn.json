@@ -62,41 +62,6 @@
   "maugiao": {
     "name": "Trẻ mẫu giáo",
     "fields": {
-      "1b_ngay": {
-        "name": "1b/ngày",
-        "fields": {
-          "tre_3_4t": {
-            "name": "Trẻ 3-4 tuổi",
-            "type": "number",
-            "col": "N"
-          },
-          "lop_3_4t": {
-            "name": "Lớp",
-            "type": "number",
-            "col": "O"
-          },
-          "tre_4_5t": {
-            "name": "Trẻ 4-5 tuổi",
-            "type": "number",
-            "col": "P"
-          },
-          "lop_4_5t": {
-            "name": "Lớp",
-            "type": "number",
-            "col": "Q"
-          },
-          "tre_5_6t": {
-            "name": "Trẻ 5-6 tuổi",
-            "type": "number",
-            "col": "R"
-          },
-          "lop_5_6t": {
-            "name": "Lớp",
-            "type": "number",
-            "col": "S"
-          }
-        }
-      },
       "tre_3_4t": {
         "name": "Trẻ 3-4 tuổi",
         "type": "number",

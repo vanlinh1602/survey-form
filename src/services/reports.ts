@@ -35,6 +35,12 @@ export class ReportsService {
         return docs.docs.map((docSnap) => docSnap.data() as ReportsStore);
     }
 
+    static async getAllReport(): Promise<ReportsStore[]> {
+        const reportRef = collection(firestore, 'reports');
+        const docs = await getDocs(reportRef);
+        return docs.docs.map((docSnap) => docSnap.data() as ReportsStore);
+    }
+
     static async updateReport(
         id: string,
         report: Partial<ReportsStore>
