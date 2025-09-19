@@ -1,8 +1,12 @@
 import {
+    collection,
     deleteDoc,
     doc,
     getDoc,
+    getDocs,
+    query,
     setDoc,
+    where,
 } from 'firebase/firestore';
 
 import type { UserInfo } from '@/features/system/type';
@@ -22,6 +26,13 @@ export class ReportsService {
             return docSnap.data() as ReportsStore;
         }
         throw new Error('Report not found');
+    }
+
+    static async queryReport(level: string): Promise<ReportsStore[]> {
+        const reportRef = collection(firestore, 'reports');
+        const q = query(reportRef, where('info.level', '==', level));
+        const docs = await getDocs(q);
+        return docs.docs.map((docSnap) => docSnap.data() as ReportsStore);
     }
 
     static async updateReport(

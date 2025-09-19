@@ -8,10 +8,12 @@ import AuthPages from './AuthPages';
 import { useSystemStore } from './features/system/hooks';
 import { auth } from './services/firebase';
 import { ReportsService } from './services/reports';
+import { UserService } from './services/user';
 
 const HomePage = lazy(() => import('./pages/Home'));
 const FormPage = lazy(() => import('./pages/Form'));
 const LoginPage = lazy(() => import('./pages/Login'));
+const ExcelPage = lazy(() => import('./pages/Excel'));
 
 function App() {
   const { setUser, userId, setForm, setInfo, setIsLoading } = useSystemStore(
@@ -27,10 +29,20 @@ function App() {
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser({
-          id: user.uid,
-          email: user.email || '',
-        });
+        UserService.getUser(user)
+          .then((userData) => {
+            setUser({
+              id: userData.id,
+              email: userData.email || '',
+              isAdmin: userData.isAdmin,
+            });
+          })
+          .catch(() => {
+            setUser({
+              id: '',
+              email: '',
+            });
+          });
       } else {
         setUser({
           id: '',
@@ -70,6 +82,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route element={<AuthPages />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/excel" element={<ExcelPage />} />
             <Route path=":id" element={<FormPage />} />
             <Route
               path="*"

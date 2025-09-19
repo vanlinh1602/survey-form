@@ -4,23 +4,28 @@
     "fields": {
       "nhom": {
         "name": "NHÓM",
-        "type": "string"
+        "type": "string",
+        "col": "D"
       },
       "vung": {
         "name": "Thuộc vùng",
-        "type": "string"
+        "type": "string",
+        "col": "E"
       },
       "muc_do_tu_chi": {
         "name": "Mức độ tự chủ chi thường xuyên (%)",
-        "type": "number"
+        "type": "number",
+        "col": "F"
       },
       "du_toan_thu_2026": {
         "name": "Dự toán thu 2026 (DVT: triệu đồng)",
-        "type": "number"
+        "type": "number",
+        "col": "G"
       },
       "tong_so_lop": {
         "name": "Tổng số lớp",
-        "type": "number"
+        "type": "number",
+        "col": "H"
       }
     }
   },
@@ -32,11 +37,13 @@
         "fields": {
           "hs": {
             "name": "Học sinh",
-            "type": "number"
+            "type": "number",
+            "col": "I"
           },
           "lop": {
             "name": "Lớp",
-            "type": "number"
+            "type": "number",
+            "col": "J"
           }
         }
       },
@@ -45,11 +52,13 @@
         "fields": {
           "hs": {
             "name": "Học sinh",
-            "type": "number"
+            "type": "number",
+            "col": "K"
           },
           "lop": {
             "name": "Lớp",
-            "type": "number"
+            "type": "number",
+            "col": "L"
           }
         }
       }
@@ -63,11 +72,13 @@
         "fields": {
           "hs": {
             "name": "Học sinh",
-            "type": "number"
+            "type": "number",
+            "col": "M"
           },
           "lop": {
             "name": "Lớp",
-            "type": "number"
+            "type": "number",
+            "col": "N"
           }
         }
       },
@@ -76,11 +87,13 @@
         "fields": {
           "hs": {
             "name": "Học sinh",
-            "type": "number"
+            "type": "number",
+            "col": "O"
           },
           "lop": {
             "name": "Lớp",
-            "type": "number"
+            "type": "number",
+            "col": "P"
           }
         }
       }
@@ -91,31 +104,38 @@
     "fields": {
       "ts": {
         "name": "Tổng số",
-        "type": "number"
+        "type": "number",
+        "col": "Q"
       },
       "cbql": {
         "name": "Cán bộ quản lý",
-        "type": "number"
+        "type": "number",
+        "col": "R"
       },
       "gvth": {
         "name": "Giáo viên Tiểu học",
-        "type": "number"
+        "type": "number",
+        "col": "S"
       },
       "gvthcs": {
         "name": "Giáo viên THCS",
-        "type": "number"
+        "type": "number",
+        "col": "T"
       },
       "ptd": {
         "name": "Tổng phụ trách Đội",
-        "type": "number"
+        "type": "number",
+        "col": "U"
       },
       "tv_tb": {
         "name": "Thư viện, thiết bị, CNTT",
-        "type": "number"
+        "type": "number",
+        "col": "V"
       },
       "ke_toan_van_thu_thu_quy": {
         "name": "Kế toán, văn thư, thủ quỹ, giáo vụ",
-        "type": "number"
+        "type": "number",
+        "col": "W"
       }
     }
   },
@@ -124,15 +144,18 @@
     "fields": {
       "nsnn": {
         "name": "Số lượng người làm việc hưởng lương từ NSNN",
-        "type": "number"
+        "type": "number",
+        "col": "X"
       },
       "su_nghiep": {
         "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
-        "type": "number"
+        "type": "number",
+        "col": "Y"
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ (Trong chỉ tiêu Hội đồng ND giao hằng năm)",
-        "type": "number"
+        "type": "number",
+        "col": "Z"
       }
     }
   },
@@ -144,31 +167,38 @@
         "fields": {
           "ts": {
             "name": "Tổng số",
-            "type": "number"
+            "type": "number",
+            "col": "AA"
           },
           "cbql": {
             "name": "Cán bộ quản lý",
-            "type": "number"
+            "type": "number",
+            "col": "AB"
           },
           "gvth": {
             "name": "Giáo viên Tiểu học",
-            "type": "number"
+            "type": "number",
+            "col": "AC"
           },
           "gvthcs": {
             "name": "Giáo viên THCS",
-            "type": "number"
+            "type": "number",
+            "col": "AD"
           },
           "ptd": {
             "name": "Tổng phụ trách Đội",
-            "type": "number"
+            "type": "number",
+            "col": "AE"
           },
           "tv_tb": {
             "name": "Thư viện, thiết bị, CNTT",
-            "type": "number"
+            "type": "number",
+            "col": "AF"
           },
           "ke_toan_van_thu_thu_quy": {
             "name": "Kế toán, văn thư, thủ quỹ, giáo vụ",
-            "type": "number"
+            "type": "number",
+            "col": "AG"
           }
         }
       },
@@ -177,17 +207,20 @@
         "fields": {
           "bien_che": {
             "name": "Trong chỉ tiêu biên chế được giao (biên chế được giao nhưng chưa tuyển dụng)",
-            "type": "number"
+            "type": "number",
+            "col": "AH"
           },
           "hdnd": {
             "name": "Trong chỉ tiêu Hội đồng nhân dân giao theo hằng năm",
-            "type": "number"
+            "type": "number",
+            "col": "AI"
           }
         }
       },
       "ho_tro": {
         "name": "Hợp đồng hỗ trợ, phục vụ",
-        "type": "number"
+        "type": "number",
+        "col": "AJ"
       }
     }
   },
@@ -196,20 +229,24 @@
     "fields": {
       "nsnn": {
         "name": "Số lượng người làm việc hưởng lương từ NSNN",
-        "type": "number"
+        "type": "number",
+        "col": "AK"
       },
       "su_nghiep": {
         "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
-        "type": "number"
+        "type": "number",
+        "col": "AL"
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ",
-        "type": "number"
+        "type": "number",
+        "col": "AM"
       }
     }
   },
   "note": {
     "name": "Ghi chú",
-    "type": "string"
+    "type": "string",
+    "col": "AN"
   }
 }

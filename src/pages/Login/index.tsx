@@ -54,7 +54,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (user?.id) {
-      navigate('/');
+      navigate(next || '/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id]);

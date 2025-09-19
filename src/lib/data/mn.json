@@ -4,19 +4,23 @@
     "fields": {
       "nhom": {
         "name": "NHÓM",
-        "type": "string"
+        "type": "string",
+        "col": "D"
       },
       "muc_do_tu_chi": {
         "name": "Mức độ tự chủ chi thường xuyên (%)",
-        "type": "number"
+        "type": "number",
+        "col": "E"
       },
       "du_toan_thu_2026": {
         "name": "Dự toán thu 2026 (DVT: triệu đồng)",
-        "type": "number"
+        "type": "number",
+        "col": "F"
       },
       "tong_so_nhom_lop": {
         "name": "Tổng số nhóm/lớp",
-        "type": "number"
+        "type": "number",
+        "col": "G"
       }
     }
   },
@@ -25,27 +29,33 @@
     "fields": {
       "tre_3_12": {
         "name": "Trẻ 3-12 tháng",
-        "type": "number"
+        "type": "number",
+        "col": "H"
       },
       "nhom_3_12": {
-        "name": "Nhóm 3-12 tháng",
-        "type": "number"
+        "name": "Nhóm",
+        "type": "number",
+        "col": "I"
       },
       "tre_13_24": {
         "name": "Trẻ 13-24 tháng",
-        "type": "number"
+        "type": "number",
+        "col": "J"
       },
       "nhom_13_24": {
-        "name": "Nhóm 13-24 tháng",
-        "type": "number"
+        "name": "Nhóm",
+        "type": "number",
+        "col": "K"
       },
       "tre_25_36": {
         "name": "Trẻ 25-36 tháng",
-        "type": "number"
+        "type": "number",
+        "col": "L"
       },
       "nhom_25_36": {
-        "name": "Nhóm 25-36 tháng",
-        "type": "number"
+        "name": "Nhóm",
+        "type": "number",
+        "col": "M"
       }
     }
   },
@@ -57,53 +67,65 @@
         "fields": {
           "tre_3_4t": {
             "name": "Trẻ 3-4 tuổi",
-            "type": "number"
+            "type": "number",
+            "col": "N"
           },
           "lop_3_4t": {
-            "name": "Lớp 3-4 tuổi",
-            "type": "number"
+            "name": "Lớp",
+            "type": "number",
+            "col": "O"
           },
           "tre_4_5t": {
             "name": "Trẻ 4-5 tuổi",
-            "type": "number"
+            "type": "number",
+            "col": "P"
           },
           "lop_4_5t": {
-            "name": "Lớp 4-5 tuổi",
-            "type": "number"
+            "name": "Lớp",
+            "type": "number",
+            "col": "Q"
           },
           "tre_5_6t": {
             "name": "Trẻ 5-6 tuổi",
-            "type": "number"
+            "type": "number",
+            "col": "R"
           },
           "lop_5_6t": {
-            "name": "Lớp 5-6 tuổi",
-            "type": "number"
+            "name": "Lớp",
+            "type": "number",
+            "col": "S"
           }
         }
       },
       "tre_3_4t": {
         "name": "Trẻ 3-4 tuổi",
-        "type": "number"
+        "type": "number",
+        "col": "T"
       },
       "lop_3_4t": {
-        "name": "Lớp 3-4 tuổi",
-        "type": "number"
+        "name": "Lớp",
+        "type": "number",
+        "col": "U"
       },
       "tre_4_5t": {
         "name": "Trẻ 4-5 tuổi",
-        "type": "number"
+        "type": "number",
+        "col": "V"
       },
       "lop_4_5t": {
-        "name": "Lớp 4-5 tuổi",
-        "type": "number"
+        "name": "Lớp",
+        "type": "number",
+        "col": "W"
       },
       "tre_5_6t": {
         "name": "Trẻ 5-6 tuổi",
-        "type": "number"
+        "type": "number",
+        "col": "X"
       },
       "lop_5_6t": {
-        "name": "Lớp 5-6 tuổi",
-        "type": "number"
+        "name": "Lớp",
+        "type": "number",
+        "col": "Y"
       }
     }
   },
@@ -112,23 +134,28 @@
     "fields": {
       "ts": {
         "name": "Tổng số",
-        "type": "number"
+        "type": "number",
+        "col": "Z"
       },
       "bgh": {
         "name": "Ban Giám hiệu",
-        "type": "number"
+        "type": "number",
+        "col": "AA"
       },
       "gv_nha_tre": {
         "name": "GV nhà trẻ",
-        "type": "number"
+        "type": "number",
+        "col": "AB"
       },
       "gv_mau_giao": {
         "name": "GV mẫu giáo",
-        "type": "number"
+        "type": "number",
+        "col": "AC"
       },
       "ke_toan_van_thu_thu_quy": {
         "name": "Kế toán, văn thư, thủ quỹ",
-        "type": "number"
+        "type": "number",
+        "col": "AD"
       }
     }
   },
@@ -137,15 +164,18 @@
     "fields": {
       "nsnn": {
         "name": "Số lượng người làm việc hưởng lương từ NSNN",
-        "type": "number"
+        "type": "number",
+        "col": "AE"
       },
       "su_nghiep": {
         "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
-        "type": "number"
+        "type": "number",
+        "col": "AF"
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ",
-        "type": "number"
+        "type": "number",
+        "col": "AG"
       }
     }
   },
@@ -157,33 +187,40 @@
         "fields": {
           "ts": {
             "name": "Tổng số",
-            "type": "number"
+            "type": "number",
+            "col": "AH"
           },
           "bgh": {
             "name": "Ban Giám hiệu",
-            "type": "number"
+            "type": "number",
+            "col": "AI"
           },
           "gv_nha_tre": {
             "name": "GV nhà trẻ",
-            "type": "number"
+            "type": "number",
+            "col": "AJ"
           },
           "gv_mau_giao": {
             "name": "GV mẫu giáo",
-            "type": "number"
+            "type": "number",
+            "col": "AK"
           },
           "ke_toan_van_thu_thu_quy": {
             "name": "Kế toán, văn thư, thủ quỹ",
-            "type": "number"
+            "type": "number",
+            "col": "AL"
           }
         }
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ",
-        "type": "number"
+        "type": "number",
+        "col": "AM"
       },
       "hop_dong_ho_tro": {
         "name": "Hợp đồng hỗ trợ",
-        "type": "number"
+        "type": "number",
+        "col": "AN"
       }
     }
   },
@@ -192,20 +229,24 @@
     "fields": {
       "nsnn": {
         "name": "Số lượng người làm việc hưởng lương từ NSNN",
-        "type": "number"
+        "type": "number",
+        "col": "AO"
       },
       "su_nghiep": {
         "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
-        "type": "number"
+        "type": "number",
+        "col": "AP"
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ",
-        "type": "number"
+        "type": "number",
+        "col": "AQ"
       }
     }
   },
   "note": {
     "name": "Ghi chú",
-    "type": "string"
+    "type": "string",
+    "col": "AR"
   }
 }

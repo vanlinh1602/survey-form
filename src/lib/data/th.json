@@ -4,19 +4,28 @@
     "fields": {
       "nhom": {
         "name": "NHÓM",
-        "type": "string"
+        "type": "string",
+        "col": "D"
+      },
+      "vung": {
+        "name": "Thuộc vùng",
+        "type": "string",
+        "col": "E"
       },
       "muc_do_tu_chi": {
         "name": "Mức độ tự chủ chi thường xuyên (%)",
-        "type": "number"
+        "type": "number",
+        "col": "F"
       },
       "du_toan_thu_2026": {
         "name": "Dự toán thu 2026 (DVT: triệu đồng)",
-        "type": "number"
+        "type": "number",
+        "col": "G"
       },
       "tong_so_lop": {
         "name": "Tổng số lớp",
-        "type": "number"
+        "type": "number",
+        "col": "H"
       }
     }
   },
@@ -25,11 +34,13 @@
     "fields": {
       "hs": {
         "name": "Học sinh",
-        "type": "number"
+        "type": "number",
+        "col": "I"
       },
       "lop": {
         "name": "Lớp",
-        "type": "number"
+        "type": "number",
+        "col": "J"
       }
     }
   },
@@ -38,11 +49,13 @@
     "fields": {
       "hs": {
         "name": "Học sinh",
-        "type": "number"
+        "type": "number",
+        "col": "K"
       },
       "lop": {
         "name": "Lớp",
-        "type": "number"
+        "type": "number",
+        "col": "L"
       }
     }
   },
@@ -51,27 +64,33 @@
     "fields": {
       "ts": {
         "name": "Tổng số",
-        "type": "number"
+        "type": "number",
+        "col": "M"
       },
       "bgh": {
-        "name": "Ban Giám hiệu",
-        "type": "number"
+        "name": "Ban giám hiệu",
+        "type": "number",
+        "col": "N"
       },
       "gv": {
         "name": "Giáo viên",
-        "type": "number"
+        "type": "number",
+        "col": "O"
       },
       "ptd": {
         "name": "Tổng phụ trách Đội",
-        "type": "number"
+        "type": "number",
+        "col": "P"
       },
       "tv_tb": {
         "name": "Thư viện, thiết bị, CNTT",
-        "type": "number"
+        "type": "number",
+        "col": "Q"
       },
       "ke_toan_van_thu_thu_quy": {
         "name": "Kế toán, văn thư, thủ quỹ, giáo vụ",
-        "type": "number"
+        "type": "number",
+        "col": "R"
       }
     }
   },
@@ -80,15 +99,18 @@
     "fields": {
       "nsnn": {
         "name": "Số lượng người làm việc hưởng lương từ NSNN",
-        "type": "number"
+        "type": "number",
+        "col": "S"
       },
       "su_nghiep": {
         "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
-        "type": "number"
+        "type": "number",
+        "col": "T"
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ (Trong chỉ tiêu Hội đồng ND giao hằng năm)",
-        "type": "number"
+        "type": "number",
+        "col": "U"
       }
     }
   },
@@ -100,27 +122,33 @@
         "fields": {
           "ts": {
             "name": "Tổng số",
-            "type": "number"
+            "type": "number",
+            "col": "V"
           },
           "bgh": {
-            "name": "Ban Giám hiệu",
-            "type": "number"
+            "name": "Ban giám hiệu",
+            "type": "number",
+            "col": "W"
           },
           "gv": {
             "name": "Giáo viên",
-            "type": "number"
+            "type": "number",
+            "col": "X"
           },
           "ptd": {
             "name": "Tổng phụ trách Đội",
-            "type": "number"
+            "type": "number",
+            "col": "Y"
           },
           "tv_tb": {
             "name": "Thư viện, thiết bị, CNTT",
-            "type": "number"
+            "type": "number",
+            "col": "Z"
           },
           "ke_toan_van_thu_thu_quy": {
             "name": "Kế toán, văn thư, thủ quỹ",
-            "type": "number"
+            "type": "number",
+            "col": "AA"
           }
         }
       },
@@ -129,17 +157,20 @@
         "fields": {
           "bien_che": {
             "name": "Trong chỉ tiêu biên chế được giao (biên chế được giao nhưng chưa tuyển dụng)",
-            "type": "number"
+            "type": "number",
+            "col": "AB"
           },
           "hdnd": {
             "name": "Trong chỉ tiêu Hội đồng nhân dân giao theo hằng năm",
-            "type": "number"
+            "type": "number",
+            "col": "AC"
           }
         }
       },
       "ho_tro": {
         "name": "Hợp đồng hỗ trợ, phục vụ",
-        "type": "number"
+        "type": "number",
+        "col": "AD"
       }
     }
   },
@@ -148,20 +179,24 @@
     "fields": {
       "nsnn": {
         "name": "Số lượng người làm việc hưởng lương từ NSNN",
-        "type": "number"
+        "type": "number",
+        "col": "AE"
       },
       "su_nghiep": {
         "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
-        "type": "number"
+        "type": "number",
+        "col": "AF"
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ",
-        "type": "number"
+        "type": "number",
+        "col": "AG"
       }
     }
   },
   "note": {
     "name": "Ghi chú",
-    "type": "string"
+    "type": "string",
+    "col": "AH"
   }
 }
