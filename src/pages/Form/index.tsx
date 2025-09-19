@@ -157,7 +157,7 @@ export default function HierarchicalForm() {
     if (field.type === 'string') {
       if (fieldKey === 'note') {
         return (
-          <div key={fieldPath} className="col-span-full">
+          <div key={fieldPath} className="col-span-full ">
             <Label
               htmlFor={fieldPath}
               className="text-sm font-medium text-foreground"
@@ -177,7 +177,7 @@ export default function HierarchicalForm() {
       }
 
       return (
-        <div key={fieldPath}>
+        <div key={fieldPath} className="flex flex-col justify-end">
           <Label
             htmlFor={fieldPath}
             className="text-sm font-medium text-foreground"
@@ -198,7 +198,7 @@ export default function HierarchicalForm() {
 
     if (field.type === 'number') {
       return (
-        <div key={fieldPath}>
+        <div key={fieldPath} className="flex flex-col justify-end">
           <Label
             htmlFor={fieldPath}
             className="text-sm font-medium text-foreground"

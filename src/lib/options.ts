@@ -25,7 +25,7 @@ export const resources: Record<string, {
         title: 'PHỤ LỤC 2: SỐ LƯỢNG NGƯỜI LÀM VIỆC TRONG CÁC TRƯỜNG TIỂU HỌC CÔNG LẬP',
         data: th,
         template: '/templates/th.xlsx',
-        rowIndex: 6,
+        rowIndex: 7,
         endColumn: 'AI'
     },
     thcs: {
