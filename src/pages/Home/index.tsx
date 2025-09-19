@@ -96,10 +96,10 @@ export default function FormInputPage() {
                   <SelectValue placeholder="Chọn cấp học" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="mn">Mần non</SelectItem>
-                  <SelectItem value="th">Tiểu Học</SelectItem>
-                  <SelectItem value="thcs">Trung học Cơ Sở</SelectItem>
-                  <SelectItem value="thpt">Trung học Phổ Thông</SelectItem>
+                  <SelectItem value="mn">MẦM NON</SelectItem>
+                  <SelectItem value="th">TIỂU HỌC</SelectItem>
+                  <SelectItem value="thcs">TRUNG HỌC CƠ SỞ</SelectItem>
+                  <SelectItem value="thpt">TRUNG HỌC PHỔ THÔNG</SelectItem>
                 </SelectContent>
               </Select>
             </div>

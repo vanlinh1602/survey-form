@@ -24,7 +24,7 @@
   margin: auto;
   border: 2px solid #eaf0f6;
   border-radius: 50%;
-  border-top: 2px solid hsl(330 86% 65% / 0.9);
+  border-top: 2px solid hsla(233, 82%, 61%, 0.9);
   width: 20px;
   height: 20px;
   animation: animationLoading 1s linear infinite;

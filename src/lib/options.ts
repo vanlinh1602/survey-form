@@ -45,3 +45,20 @@ export const resources: Record<string, {
         endColumn: 'AO'
     }
 };
+
+export const otherReports: Record<string, {
+    key: string;
+    title: string;
+    template: string;
+}> = {
+    tienDo: {
+        key: 'tienDo',
+        title: 'Tiến độ báo cáo',
+        template: '/templates/tien_do.xlsx'
+    },
+    truongLopHS: {
+        key: 'truongLopHS',
+        title: 'Số Liệu Trường, Lớp, Học Sinh',
+        template: '/templates/truong_lop_hs.xlsx'
+    }
+};
