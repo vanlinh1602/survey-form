@@ -304,7 +304,7 @@ export default function HierarchicalForm() {
       data: Record<string, any> | undefined
     ): boolean => {
       for (const [key, field] of Object.entries(fields)) {
-        if (key === 'note') {
+        if (['note', 'muc_do_tu_chi', 'du_toan_thu_2026'].includes(key)) {
           continue;
         }
         if (field.fields) {

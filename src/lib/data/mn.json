@@ -3,17 +3,17 @@
     "name": "Thông tin cơ bản",
     "fields": {
       "nhom": {
-        "name": "NHÓM",
-        "type": "string",
+        "name": "Đơn vị nhóm 3 hoặc 4 (Đơn vị thuộc nhóm nào thì điền số 3 hoặc 4 vào ô tương ứng)",
+        "type": "number",
         "col": "D"
       },
       "muc_do_tu_chi": {
-        "name": "Mức độ tự chủ chi thường xuyên (%)",
+        "name": "Mức độ tự chủ chi thường xuyên (%) (Đơn vị nhóm 3 thực hiện nội dung này, đơn vị nhóm 4 để trống ô này)",
         "type": "number",
         "col": "E"
       },
       "du_toan_thu_2026": {
-        "name": "Dự toán thu 2026 (DVT: triệu đồng)",
+        "name": "Dự toán thu năm 2026 (ĐVT: triệu đồng) (Đơn vị nhóm 3 thực hiện nội dung này, đơn vị nhóm 4 để trống ô này)",
         "type": "number",
         "col": "F"
       },
@@ -65,32 +65,32 @@
       "tre_3_4t": {
         "name": "Trẻ 3-4 tuổi",
         "type": "number",
-        "col": "T"
+        "col": "N"
       },
       "lop_3_4t": {
         "name": "Lớp",
         "type": "number",
-        "col": "U"
+        "col": "O"
       },
       "tre_4_5t": {
         "name": "Trẻ 4-5 tuổi",
         "type": "number",
-        "col": "V"
+        "col": "P"
       },
       "lop_4_5t": {
         "name": "Lớp",
         "type": "number",
-        "col": "W"
+        "col": "Q"
       },
       "tre_5_6t": {
         "name": "Trẻ 5-6 tuổi",
         "type": "number",
-        "col": "X"
+        "col": "R"
       },
       "lop_5_6t": {
         "name": "Lớp",
         "type": "number",
-        "col": "Y"
+        "col": "S"
       }
     }
   },
@@ -100,27 +100,27 @@
       "ts": {
         "name": "Tổng số",
         "type": "number",
-        "col": "Z"
+        "col": "T"
       },
       "bgh": {
         "name": "Ban Giám hiệu",
         "type": "number",
-        "col": "AA"
+        "col": "U"
       },
       "gv_nha_tre": {
         "name": "GV nhà trẻ",
         "type": "number",
-        "col": "AB"
+        "col": "V"
       },
       "gv_mau_giao": {
         "name": "GV mẫu giáo",
         "type": "number",
-        "col": "AC"
+        "col": "W"
       },
       "ke_toan_van_thu_thu_quy": {
-        "name": "Kế toán, văn thư, thủ quỹ",
+        "name": "Kế toán, văn thư, thủ quỹ, y tế",
         "type": "number",
-        "col": "AD"
+        "col": "X"
       }
     }
   },
@@ -130,22 +130,22 @@
       "nsnn": {
         "name": "Số lượng người làm việc hưởng lương từ NSNN",
         "type": "number",
-        "col": "AE"
+        "col": "Y"
       },
       "su_nghiep": {
         "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
         "type": "number",
-        "col": "AF"
+        "col": "Z"
       },
       "hop_dong": {
-        "name": "Hợp đồng chuyên môn nghiệp vụ",
+        "name": "Hợp đồng chuyên môn nghiệp vụ (Trong chỉ tiêu Hội đồng ND giao hằng năm)",
         "type": "number",
-        "col": "AG"
+        "col": "AA"
       }
     }
   },
   "ts_CBGVNL_co_mat_thang_8_2025": {
-    "name": "Tổng số CB-GV-NV có mặt tháng 8/2025",
+    "name": "Tổng số CB-GV-NV có mặt (tại thời điểm tháng 8/2025)",
     "fields": {
       "vien_chuc": {
         "name": "Viên chức",
@@ -153,39 +153,49 @@
           "ts": {
             "name": "Tổng số",
             "type": "number",
-            "col": "AH"
+            "col": "AB"
           },
           "bgh": {
             "name": "Ban Giám hiệu",
             "type": "number",
-            "col": "AI"
+            "col": "AC"
           },
           "gv_nha_tre": {
             "name": "GV nhà trẻ",
             "type": "number",
-            "col": "AJ"
+            "col": "AD"
           },
           "gv_mau_giao": {
             "name": "GV mẫu giáo",
             "type": "number",
-            "col": "AK"
+            "col": "AE"
           },
           "ke_toan_van_thu_thu_quy": {
-            "name": "Kế toán, văn thư, thủ quỹ",
+            "name": "Kế toán, văn thư, thủ quỹ, y tế",
             "type": "number",
-            "col": "AL"
+            "col": "AF"
           }
         }
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ",
-        "type": "number",
-        "col": "AM"
+        "fields": {
+          "bien_che": {
+            "name": "Trong chỉ tiêu biên chế được giao (biên chế được giao nhưng chưa tuyển dụng)",
+            "type": "number",
+            "col": "AG"
+          },
+          "hdnd": {
+            "name": "Trong chỉ tiêu Hội đồng nhân dân giao theo hằng năm",
+            "type": "number",
+            "col": "AH"
+          }
+        }
       },
       "hop_dong_ho_tro": {
-        "name": "Hợp đồng hỗ trợ",
+        "name": "Hợp đồng hỗ trợ, phục vụ",
         "type": "number",
-        "col": "AN"
+        "col": "AI"
       }
     }
   },
@@ -195,23 +205,28 @@
       "nsnn": {
         "name": "Số lượng người làm việc hưởng lương từ NSNN",
         "type": "number",
-        "col": "AO"
+        "col": "AJ"
       },
       "su_nghiep": {
         "name": "Số lượng người làm việc hưởng lương từ nguồn thu sự nghiệp",
         "type": "number",
-        "col": "AP"
+        "col": "AK"
       },
       "hop_dong": {
         "name": "Hợp đồng chuyên môn nghiệp vụ",
         "type": "number",
-        "col": "AQ"
+        "col": "AL"
       }
     }
+  },
+  "tre_khuyet_tat": {
+    "name": "Tổng số trẻ khuyết tật học hòa nhập",
+    "type": "number",
+    "col": "AM"
   },
   "note": {
     "name": "Ghi chú",
     "type": "string",
-    "col": "AR"
+    "col": "AN"
   }
 }

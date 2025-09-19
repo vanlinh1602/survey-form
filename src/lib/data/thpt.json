@@ -3,8 +3,8 @@
     "name": "Thông tin cơ bản",
     "fields": {
       "nhom": {
-        "name": "NHÓM",
-        "type": "string",
+        "name": "Đơn vị nhóm 3 hoặc 4 (Đơn vị thuộc nhóm nào thì điền số 3 hoặc 4 vào ô tương ứng)",
+        "type": "number",
         "col": "D"
       },
       "vung": {
@@ -13,12 +13,12 @@
         "col": "E"
       },
       "muc_do_tu_chi": {
-        "name": "Mức độ tự chủ chi thường xuyên (%)",
+        "name": "Mức độ tự chủ chi thường xuyên (%) (Đơn vị nhóm 3 thực hiện nội dung này, đơn vị nhóm 4 để trống ô này)",
         "type": "number",
         "col": "F"
       },
       "du_toan_thu_2026": {
-        "name": "Dự toán thu 2026 (DVT: triệu đồng)",
+        "name": "Dự toán thu năm 2026 (ĐVT: triệu đồng) (Đơn vị nhóm 3 thực hiện nội dung này, đơn vị nhóm 4 để trống ô này)",
         "type": "number",
         "col": "G"
       }
@@ -143,7 +143,7 @@
         "col": "W"
       },
       "ke_toan_van_thu_thu_quy": {
-        "name": "Kế toán, văn thư, thủ quỹ, giáo vụ",
+        "name": "Kế toán, văn thư, thủ quỹ, giáo vụ, y tế",
         "type": "number",
         "col": "X"
       }
@@ -206,7 +206,7 @@
             "col": "AG"
           },
           "ke_toan_van_thu_thu_quy": {
-            "name": "Kế toán, văn thư, thủ quỹ, giáo vụ",
+            "name": "Kế toán, văn thư, thủ quỹ, giáo vụ, y tế",
             "type": "number",
             "col": "AH"
           }
@@ -254,9 +254,14 @@
       }
     }
   },
+  "tre_khuyet_tat": {
+    "name": "Tổng số học sinh khuyết tật học hòa nhập",
+    "type": "number",
+    "col": "AO"
+  },
   "note": {
     "name": "Ghi chú",
     "type": "string",
-    "col": "AO"
+    "col": "AP"
   }
 }
