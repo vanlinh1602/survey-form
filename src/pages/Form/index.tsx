@@ -482,7 +482,7 @@ export default function HierarchicalForm() {
                 Đăng xuất
               </Button>
             </div>
-            <div>
+            <div className="space-x-2">
               <Button
                 onClick={handleSave}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm"
