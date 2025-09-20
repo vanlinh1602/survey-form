@@ -1,11 +1,12 @@
 import { excelColToInt, intToExcelCol } from 'excel-column-name';
 import { Download, FileDown, FileSpreadsheet } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import XlsxPopulate from 'xlsx-populate/browser/xlsx-populate';
 import { useShallow } from 'zustand/shallow';
 
 import { Loading } from '@/components';
+import type { Option } from '@/components/SearchSelect';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { useSystemStore } from '@/features/system/hooks';
@@ -14,17 +15,37 @@ import { otherReports, resources } from '@/lib/options';
 import schools from '@/lib/schools.json';
 import { parseReportTienDo, parseReportTruongLopHS } from '@/lib/utils';
 import { ReportsService, type ReportsStore } from '@/services/reports';
+import { SchoolsService } from '@/services/schools';
 
 function ExcelPage() {
   // const navigate = useNavigate();
 
-  const { isLoading, user, systemSchools } = useSystemStore(
-    useShallow((state) => ({
-      user: state.user,
-      isLoading: state.isLoading,
-      systemSchools: state.schools,
-    }))
-  );
+  const { isLoading, user, systemSchools, setIsLoading, setSchools } =
+    useSystemStore(
+      useShallow((state) => ({
+        user: state.user,
+        isLoading: state.isLoading,
+        setIsLoading: state.setIsLoading,
+        systemSchools: state.schools,
+        setSchools: state.setSchools,
+      }))
+    );
+
+  useEffect(() => {
+    if (!systemSchools) {
+      setIsLoading(true);
+      SchoolsService.getAllSchools().then((schoolsData) => {
+        const groupedSchools = schoolsData.reduce((acc, s) => {
+          const { type, label, value } = s;
+          acc[type] = [...(acc[type] ?? []), { label, value }];
+          return acc;
+        }, {} as Record<string, Option[]>);
+        setSchools(groupedSchools);
+        setIsLoading(false);
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // useEffect(() => {
   //   if (!user?.isAdmin) {

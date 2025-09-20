@@ -2,10 +2,12 @@ import {
     collection,
     deleteDoc,
     doc,
+    documentId,
     getDoc,
     getDocs,
     query,
     setDoc,
+    where,
 } from 'firebase/firestore';
 
 import { firestore } from './firebase';
@@ -24,6 +26,16 @@ export class SchoolsService {
             return docSnap.data() as SchoolsStore;
         }
         throw new Error('School not found');
+    }
+
+    static async getSchoolWithId(ids: string[]): Promise<SchoolsStore[]> {
+        if (!ids || ids.length === 0) {
+            return [];
+        }
+        const schoolRef = collection(firestore, 'schools');
+        const q = query(schoolRef, where(documentId(), 'in', ids));
+        const snapshot = await getDocs(q);
+        return snapshot.docs?.map((docSnap) => docSnap.data() as SchoolsStore) ?? [];
     }
 
     static async getAllSchools(): Promise<SchoolsStore[]> {

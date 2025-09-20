@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { useShallow } from 'zustand/shallow';
 
 import { Loading } from '@/components';
+import type { Option } from '@/components/SearchSelect';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useSystemStore } from '@/features/system/hooks';
@@ -14,6 +15,7 @@ import schools from '@/lib/schools.json';
 import { generateID } from '@/lib/utils';
 import { auth } from '@/services/firebase';
 import { ReportsService } from '@/services/reports';
+import { SchoolsService } from '@/services/schools';
 
 export default function FormInputPage() {
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ export default function FormInputPage() {
     setReports,
     allReports,
     clearData,
+    setSchools,
   } = useSystemStore(
     useShallow((state) => ({
       isLoading: state.isLoading,
@@ -34,6 +37,7 @@ export default function FormInputPage() {
       setReports: state.setReports,
       allReports: state.reports,
       clearData: state.clearData,
+      setSchools: state.setSchools,
     }))
   );
 
@@ -61,6 +65,42 @@ export default function FormInputPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const fetchSchool = () => {
+      try {
+        const missingSchools: string[] = [];
+        Object.values(allReports || {}).forEach((report) => {
+          const school = report.info?.school;
+          const level = report.info?.level;
+          const isMissing = !(
+            systemSchools?.[level || '']?.find((s) => s.value === school)
+              ?.label || schools[level as keyof typeof schools]?.[school as any]
+          );
+          if (isMissing) {
+            missingSchools.push(school || '');
+          }
+        });
+        if (missingSchools.length) {
+          setIsLoading(true);
+          SchoolsService.getSchoolWithId(missingSchools).then((schoolsData) => {
+            const groupedSchools = schoolsData.reduce((acc, s) => {
+              const { type, label, value } = s;
+              acc[type] = [...(acc[type] ?? []), { label, value }];
+              return acc;
+            }, {} as Record<string, Option[]>);
+            setSchools(groupedSchools);
+            setIsLoading(false);
+          });
+        }
+      } catch (error: any) {
+        toast.error(error?.message || 'Không thể tải danh sách trường học');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchSchool();
+  }, [systemSchools, setIsLoading, setSchools, allReports]);
 
   const getSchoolName = (level: string, school: string) => {
     return (
