@@ -92,6 +92,8 @@ export default function HierarchicalForm() {
 
   const [errors, setErrors] = useState<Set<string>>(new Set());
 
+  const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
+
   useEffect(() => {
     if (currentForm) {
       setFormData(currentForm);
@@ -461,6 +463,46 @@ export default function HierarchicalForm() {
         </div>
       </main>
 
+      {/* Reset Confirmation Modal */}
+      {isResetConfirmOpen ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setIsResetConfirmOpen(false)}
+          />
+          <div className="relative bg-background border border-border rounded-lg shadow-lg w-[90%] max-w-md p-4">
+            <h3 className="text-base font-semibold text-foreground">
+              Xác nhận đặt lại
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Thầy/cô có chắc muốn đặt lại toàn bộ dữ liệu đã nhập?
+            </p>
+            <div className="mt-4 flex justify-end gap-2">
+              <Button
+                variant="outline"
+                className="border-border hover:bg-muted bg-transparent"
+                onClick={() => setIsResetConfirmOpen(false)}
+              >
+                Hủy
+              </Button>
+              <Button
+                className="bg-destructive hover:bg-destructive/90 text-white"
+                onClick={() => {
+                  handleReset();
+                  setIsResetConfirmOpen(false);
+                }}
+              >
+                Xác nhận
+              </Button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       {/* Sticky Bottom Toolbar */}
       <div className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-t border-border">
         <div className="container mx-auto px-4 py-4">
@@ -484,19 +526,19 @@ export default function HierarchicalForm() {
             </div>
             <div className="space-x-2">
               <Button
-                onClick={handleSave}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm"
-              >
-                <Save className="h-4 w-4 mr-2" />
-                Lưu
-              </Button>
-              <Button
-                onClick={handleReset}
+                onClick={() => setIsResetConfirmOpen(true)}
                 variant="outline"
                 className="border-border hover:bg-muted bg-transparent"
               >
                 <RotateCcw className="h-4 w-4 mr-2" />
                 Đặt lại
+              </Button>
+              <Button
+                onClick={handleSave}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm"
+              >
+                <Save className="h-4 w-4 mr-2" />
+                Lưu
               </Button>
             </div>
           </div>
