@@ -90,6 +90,8 @@ export default function HierarchicalForm() {
     return expanded;
   });
 
+  const [errors, setErrors] = useState<Set<string>>(new Set());
+
   useEffect(() => {
     if (currentForm) {
       setFormData(currentForm);
@@ -127,6 +129,13 @@ export default function HierarchicalForm() {
       }
 
       current[keys[keys.length - 1]] = value;
+
+      if (errors.size) {
+        const schema = formSchema as unknown as Record<string, FormField>;
+        const nextErrors = validateAll(schema, newData as Record<string, any>);
+        setErrors(nextErrors);
+      }
+
       return newData;
     });
   };
@@ -153,6 +162,7 @@ export default function HierarchicalForm() {
   const renderField = (fieldKey: string, field: FormField, parentPath = '') => {
     const fieldPath = parentPath ? `${parentPath}.${fieldKey}` : fieldKey;
     const value = getFormValue(fieldPath);
+    const isInvalid = errors.has(fieldPath);
 
     if (field.type === 'string') {
       if (fieldKey === 'note') {
@@ -168,10 +178,16 @@ export default function HierarchicalForm() {
               id={fieldPath}
               value={value as string}
               onChange={(e) => updateFormData(fieldPath, e.target.value)}
+              aria-invalid={isInvalid || undefined}
               className="mt-1 bg-input border-border focus:ring-primary focus:border-primary rounded-lg shadow-sm"
               rows={4}
               placeholder="Nhập ghi chú..."
             />
+            {isInvalid ? (
+              <p className="mt-1 text-sm text-destructive">
+                Trường này là bắt buộc.
+              </p>
+            ) : null}
           </div>
         );
       }
@@ -189,9 +205,15 @@ export default function HierarchicalForm() {
             type="text"
             value={value as string}
             onChange={(e) => updateFormData(fieldPath, e.target.value)}
+            aria-invalid={isInvalid || undefined}
             className="mt-1 bg-input border-border focus:ring-primary focus:border-primary rounded-lg shadow-sm"
             placeholder={`Nhập ${field.name.toLowerCase()}...`}
           />
+          {isInvalid ? (
+            <p className="mt-1 text-sm text-destructive">
+              Trường này là bắt buộc.
+            </p>
+          ) : null}
         </div>
       );
     }
@@ -212,9 +234,15 @@ export default function HierarchicalForm() {
             onChange={(e) =>
               updateFormData(fieldPath, Number.parseFloat(e.target.value) || 0)
             }
+            aria-invalid={isInvalid || undefined}
             className="mt-1 bg-input border-border focus:ring-primary focus:border-primary rounded-lg shadow-sm"
             placeholder={'Nhập số'}
           />
+          {isInvalid ? (
+            <p className="mt-1 text-sm text-destructive">
+              Trường này là bắt buộc.
+            </p>
+          ) : null}
         </div>
       );
     }
@@ -296,40 +324,77 @@ export default function HierarchicalForm() {
     );
   };
 
+  const OPTIONAL_KEYS = ['note', 'muc_do_tu_chi', 'du_toan_thu_2026'];
+
+  function validateAll(
+    fields: Record<string, FormField>,
+    data: Record<string, any> | undefined,
+    parentPath = ''
+  ): Set<string> {
+    const invalidPaths = new Set<string>();
+
+    for (const [key, field] of Object.entries(fields)) {
+      if (OPTIONAL_KEYS.includes(key)) continue;
+      const path = parentPath ? `${parentPath}.${key}` : key;
+
+      if (field.fields) {
+        const nestedData =
+          data && typeof data === 'object' ? (data as any)[key] : undefined;
+        const nestedInvalid = validateAll(field.fields, nestedData, path);
+        nestedInvalid.forEach((p) => invalidPaths.add(p));
+        continue;
+      }
+
+      if (field.type === 'string') {
+        const value = (data as any)?.[key];
+        if (typeof value !== 'string' || value.trim() === '')
+          invalidPaths.add(path);
+        continue;
+      }
+
+      if (field.type === 'number') {
+        const value = (data as any)?.[key];
+        if (typeof value !== 'number' || Number.isNaN(value))
+          invalidPaths.add(path);
+        continue;
+      }
+    }
+
+    return invalidPaths;
+  }
+
   const checkInput = (): boolean => {
     const schema = formSchema as unknown as Record<string, FormField>;
+    const invalid = validateAll(schema, formData as Record<string, any>);
+    setErrors(invalid);
 
-    const isSectionFilled = (
-      fields: Record<string, FormField>,
-      data: Record<string, any> | undefined
-    ): boolean => {
-      for (const [key, field] of Object.entries(fields)) {
-        if (['note', 'muc_do_tu_chi', 'du_toan_thu_2026'].includes(key)) {
-          continue;
-        }
-        if (field.fields) {
-          const nestedData =
-            data && typeof data === 'object' ? (data as any)[key] : undefined;
-          if (!isSectionFilled(field.fields, nestedData)) return false;
-          continue;
-        }
+    if (invalid.size > 0) {
+      // auto-expand ancestor sections that contain errors
+      setExpandedSections((prev) => {
+        const next = new Set(prev);
+        invalid.forEach((path) => {
+          const parts = path.split('.');
+          let acc = '';
+          for (let i = 0; i < parts.length - 1; i++) {
+            acc = acc ? `${acc}.${parts[i]}` : parts[i];
+            next.add(acc);
+          }
+        });
+        return next;
+      });
 
-        if (field.type === 'string') {
-          const value = (data as any)?.[key];
-          if (typeof value !== 'string' || value.trim() === '') return false;
-          continue;
-        }
+      // focus first invalid field
+      const first = Array.from(invalid)[0];
+      setTimeout(() => {
+        const el = document.getElementById(first);
+        el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        (el as HTMLElement | null)?.focus?.();
+      }, 0);
 
-        if (field.type === 'number') {
-          const value = (data as any)?.[key];
-          if (typeof value !== 'number' || Number.isNaN(value)) return false;
-          continue;
-        }
-      }
-      return true;
-    };
+      return false;
+    }
 
-    return isSectionFilled(schema, formData as Record<string, any>);
+    return true;
   };
 
   const handleSave = async () => {

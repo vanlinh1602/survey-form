@@ -182,8 +182,8 @@ export default function CreatableSearchSelect({
         aria-haspopup="listbox"
         aria-expanded={open}
         onClick={toggleOpen}
-        className={`flex w-full items-center justify-between rounded-md border bg-white px-3 py-2 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-pink-500 ${
-          open ? 'ring-2 ring-pink-500' : ''
+        className={`flex w-full items-center justify-between rounded-md border bg-white px-3 py-2 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
+          open ? 'ring-2 ring-cyan-500' : ''
         }`}
         disabled={disabled}
       >
@@ -272,7 +272,7 @@ export default function CreatableSearchSelect({
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => handleCreate(query)}
                 className={`flex cursor-pointer items-center gap-2 px-3 py-2 text-sm ${
-                  highlight === 0 ? 'bg-pink-50 text-pink-700' : 'text-gray-700'
+                  highlight === 0 ? 'bg-cyan-50 text-cyan-700' : 'text-gray-700'
                 }`}
               >
                 <span className="inline-flex h-5 w-5 items-center justify-center rounded-md border text-xs">
@@ -303,9 +303,9 @@ export default function CreatableSearchSelect({
                   onClick={() => handleSelect(opt)}
                   className={`flex cursor-pointer items-center justify-between px-3 py-2 text-sm ${
                     highlight === idx
-                      ? 'bg-pink-50 text-pink-700'
+                      ? 'bg-cyan-50 text-cyan-700'
                       : 'text-gray-800'
-                  }`}
+                  } ${selected ? 'bg-cyan-50 text-cyan-700' : 'text-gray-800'}`}
                 >
                   <span>{opt.label}</span>
                   {selected && (
