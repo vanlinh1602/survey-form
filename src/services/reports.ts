@@ -19,13 +19,33 @@ export type ReportsStore = {
 }
 
 export class ReportsService {
-    static async getReport(id: string): Promise<ReportsStore> {
+    static async getReport(id: string): Promise<ReportsStore | null> {
         const docRef = doc(firestore, 'reports', id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
             return docSnap.data() as ReportsStore;
         }
-        throw new Error('Report not found');
+        return null;
+    }
+
+
+    static async getUserReport(id: string, email: string): Promise<Record<string, ReportsStore>> {
+        if (!id || !email) return {};
+        const allReport: Record<string, ReportsStore> = {};
+        const reportWithId = await this.getReport(id);
+        if (reportWithId) {
+            allReport[id] = reportWithId;
+        }
+        const reportRef = collection(firestore, 'reports');
+        const q = query(
+            reportRef,
+            where('info.user', '==', email),
+        );
+        const docs = await getDocs(q);
+        docs.docs.forEach((docSnap) => {
+            allReport[docSnap.id] = docSnap.data() as ReportsStore;
+        }, {} as Record<string, ReportsStore>);
+        return allReport;
     }
 
     static async queryReport(level: string): Promise<ReportsStore[]> {

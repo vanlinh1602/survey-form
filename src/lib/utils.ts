@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
 import { intToExcelCol } from 'excel-column-name';
 import { get, set } from 'lodash';
+import { nanoid } from 'nanoid';
 import { twMerge } from 'tailwind-merge';
 
 import cities from '@/lib/cities.json';
@@ -9,6 +10,21 @@ import type { ReportsStore } from '@/services/reports';
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const generateID = ({
+  ids = [],
+  size = 10,
+  options = { prefix: '', suffix: '', ignore: [] },
+}: {
+  ids?: string[];
+  size?: number;
+  options?: { prefix?: string; suffix?: string; ignore?: string[] };
+} = {}): string => {
+  const id = `${options.prefix ?? ''}${nanoid(size)}${options.suffix ?? ''}`;
+  if (ids.includes(id) || options.ignore?.some((ignore) => id.includes(ignore)))
+    return generateID({ ids, size, options });
+  return id;
+};
 
 
 export function generateKeyFromName(name: string): string {

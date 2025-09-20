@@ -8,9 +8,7 @@ import AuthPages from './AuthPages';
 import type { Option } from './components/SearchSelect';
 import { useSystemStore } from './features/system/hooks';
 import { auth } from './services/firebase';
-import { ReportsService } from './services/reports';
 import { SchoolsService } from './services/schools';
-import { UserService } from './services/user';
 
 const HomePage = lazy(() => import('./pages/Home'));
 const FormPage = lazy(() => import('./pages/Form'));
@@ -18,20 +16,9 @@ const LoginPage = lazy(() => import('./pages/Login'));
 const ExcelPage = lazy(() => import('./pages/Excel'));
 
 function App() {
-  const {
-    setUser,
-    userId,
-    setForm,
-    setInfo,
-    setIsLoading,
-    systemSchools,
-    setSchools,
-  } = useSystemStore(
+  const { setUser, setIsLoading, systemSchools, setSchools } = useSystemStore(
     useShallow((state) => ({
       setUser: state.setUser,
-      userId: state.user?.id,
-      setForm: state.setForm,
-      setInfo: state.setInfo,
       setIsLoading: state.setIsLoading,
       systemSchools: state.schools,
       setSchools: state.setSchools,
@@ -41,51 +28,14 @@ function App() {
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
       if (user) {
-        UserService.getUser(user)
-          .then((userData) => {
-            setUser({
-              id: userData.id,
-              email: userData.email || '',
-              isAdmin: userData.isAdmin,
-            });
-          })
-          .catch(() => {
-            setUser({
-              id: '',
-              email: '',
-            });
-          });
-      } else {
         setUser({
-          id: '',
-          email: '',
+          id: user.uid,
+          email: user.email || '',
         });
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    try {
-      if (userId) {
-        setIsLoading(true);
-        ReportsService.getReport(userId)
-          .then((report) => {
-            if (report) {
-              setForm(report.form);
-              setInfo(report.info);
-            }
-            setIsLoading(false);
-          })
-          .catch(() => {
-            setIsLoading(false);
-          });
-      }
-    } catch {
-      setIsLoading(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
 
   useEffect(() => {
     if (!systemSchools) {
