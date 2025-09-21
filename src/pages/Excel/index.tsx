@@ -13,7 +13,11 @@ import { useSystemStore } from '@/features/system/hooks';
 import cities from '@/lib/cities.json';
 import { otherReports, resources } from '@/lib/options';
 import schools from '@/lib/schools.json';
-import { parseReportTienDo, parseReportTruongLopHS } from '@/lib/utils';
+import {
+  parseReportDanhSachTruong,
+  parseReportTienDo,
+  parseReportTruongLopHS,
+} from '@/lib/utils';
 import { ReportsService, type ReportsStore } from '@/services/reports';
 import { SchoolsService } from '@/services/schools';
 
@@ -200,6 +204,8 @@ function ExcelPage() {
         parseReportTienDo(dataSheet, data);
       } else if (level === 'truongLopHS') {
         parseReportTruongLopHS(dataSheet, data);
+      } else if (level === 'danhSachTruong') {
+        parseReportDanhSachTruong(workbook, data, systemSchools ?? {});
       }
 
       const blob = await workbook.outputAsync();
@@ -240,10 +246,10 @@ function ExcelPage() {
                       <FileSpreadsheet className="h-5 w-5 text-primary mt-3" />
                       <div>
                         <h2 className="text-base font-semibold text-foreground mt-3">
-                          {lv.key.toUpperCase()}
+                          {lv.title}
                         </h2>
                         <p className="text-sm text-muted-foreground">
-                          {lv.title}
+                          {lv.key.toUpperCase()}
                         </p>
                       </div>
                     </div>
@@ -287,10 +293,10 @@ function ExcelPage() {
                       <FileSpreadsheet className="h-5 w-5 text-primary mt-3" />
                       <div>
                         <h2 className="text-base font-semibold text-foreground mt-3">
-                          {lv.key.toUpperCase()}
+                          {lv.title}
                         </h2>
                         <p className="text-sm text-muted-foreground">
-                          {lv.title}
+                          {lv.key.toUpperCase()}
                         </p>
                       </div>
                     </div>

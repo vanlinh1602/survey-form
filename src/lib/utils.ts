@@ -4,7 +4,9 @@ import { get, set } from 'lodash';
 import { nanoid } from 'nanoid';
 import { twMerge } from 'tailwind-merge';
 
+import type { Option } from '@/components/SearchSelect';
 import cities from '@/lib/cities.json';
+import schools from '@/lib/schools.json';
 import type { ReportsStore } from '@/services/reports';
 
 export function cn(...inputs: ClassValue[]) {
@@ -24,6 +26,13 @@ export const generateID = ({
   if (ids.includes(id) || options.ignore?.some((ignore) => id.includes(ignore)))
     return generateID({ ids, size, options });
   return id;
+};
+
+export const getSchoolName = (systemSchools: Record<string, Option[]>, level: string, school: string) => {
+  return (
+    systemSchools?.[level]?.find((s) => s.value === school)?.label ||
+    schools[level as keyof typeof schools]?.[school as any]
+  );
 };
 
 
@@ -152,4 +161,35 @@ export const parseReportTruongLopHS = (sheet: any, data: ReportsStore[]) => {
   sheet.cell('D19').value(result.hs.thcs);
   sheet.cell('D20').value(result.hs.thpt);
   sheet.cell('D21').value(result.hs.gdnn);
+};
+
+export const parseReportDanhSachTruong = (workbook: any, data: ReportsStore[], systemSchools: Record<string, Option[]>) => {
+  const results: Record<string, { name: string, ward: string }[]> = {
+    mn: [],
+    th: [],
+    thcs: [],
+    thpt: [],
+  };
+
+  data.forEach((item) => {
+    const name = getSchoolName(systemSchools, item.info.level, item.info.school);
+    const ward = (cities as any)?.[68]?.wards?.[item.info.ward as any]?.name;
+    results[item.info.level].push({ name, ward });
+  });
+
+  Object.entries(results).forEach(([level, result]) => {
+    const sheet = workbook.sheet(level);
+    const sortedResult = result.sort((a, b) => {
+      const byWard = a.ward.localeCompare(b.ward);
+      if (byWard !== 0) return byWard;
+      return a.name.localeCompare(b.name);
+    });
+    let row = 4;
+    sortedResult.forEach((item, index) => {
+      sheet.cell(`A${row}`).value(index + 1);
+      sheet.cell(`B${row}`).value(item.name);
+      sheet.cell(`C${row}`).value(item.ward);
+      row += 1;
+    });
+  });
 };

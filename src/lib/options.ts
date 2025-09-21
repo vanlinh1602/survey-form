@@ -60,5 +60,10 @@ export const otherReports: Record<string, {
         key: 'truongLopHS',
         title: 'Số Liệu Trường, Lớp, Học Sinh',
         template: '/templates/truong_lop_hs.xlsx'
+    },
+    danhSachTruong: {
+        key: 'danhSachTruong',
+        title: 'Danh sách trường đã gửi',
+        template: '/templates/danh_sach_truong.xlsx'
     }
 };
