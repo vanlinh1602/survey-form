@@ -54,7 +54,11 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (user?.id) {
-      navigate(next || '/');
+      if (next === '/excel') {
+        navigate('/excel');
+      } else {
+        navigate('/');
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id]);
